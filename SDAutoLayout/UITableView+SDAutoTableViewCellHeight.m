@@ -213,8 +213,12 @@
             if (originalSection == section) {
                 NSNumber *heightCache = _cacheDictionary[key];
                 NSArray *frameCache = _subviewFrameCacheDict[key];
-                [tempHeightCaches setObject:heightCache atIndexedSubscript:row];
-                [tempFrameCaches setObject:frameCache atIndexedSubscript:row];
+                if (heightCache) {
+                    [tempHeightCaches setObject:heightCache atIndexedSubscript:row];
+                }
+                if(frameCache) {
+                    [tempFrameCaches setObject:frameCache atIndexedSubscript:row];
+                }
                 [_cacheDictionary removeObjectForKey:key];
                 [_subviewFrameCacheDict removeObjectForKey:key];
             }
